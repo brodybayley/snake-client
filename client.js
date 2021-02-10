@@ -19,9 +19,9 @@ const connect = function () {
     conn.write('Name: BBB');
   });
 
-  conn.on('connect', () => {
-    conn.write('Move: up');
-  });
+  // conn.on('connect', () => {
+  //   conn.write('Move: up');
+  // });
 
   // conn.on('connect', () => {
   //   setTimeout(() => {
