@@ -6,29 +6,32 @@ const stdin = process.stdin;
  */
 let connection;
 
+const handleUserInput = function(key) {
+  if (key === '\u0003') {
+    process.exit();
+  }
+  if (key === 'w') {
+    connection.write('Move: up');
+  }
+  if (key === 'a') {
+    connection.write('Move: left');
+  }
+  if (key === 's') {
+    connection.write('Move: down');
+  }
+  if (key === 'd') {
+    connection.write('Move: right');
+  }
+};
 
-const setupInput = function (connectionObject) {
+const setupInput = function(connectionObject) {
   connection = connectionObject;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
+  stdin.on('data', handleUserInput);
   stdin.resume();
-  stdin.on('data', (userInput) => {
-    handleUserInput(userInput, connection)
-  });
-  const handleUserInput = function (key, connectionObject) {
-    if (key === '\u0003') {
-      process.exit();
-    } else if (key === '\u0057\u0077') {
-      connectionObject.write('Move: up');
-    } else if (key === '\u0041\u0061') {
-      connectionObject.write('Move: left');
-    } else if (key === '\u0053\u0073') {
-      connectionObject.write('Move: down');
-    } else if (key === '\u0044\u0064') {
-      connectionObject.write('Move: right');
-    };
-  };
   return stdin;
 };
 
 module.exports = setupInput;
+
