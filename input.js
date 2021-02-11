@@ -22,7 +22,21 @@ const handleUserInput = function(key) {
   if (key === 'd') {
     connection.write('Move: right');
   }
+  if (key === 'b') {
+    connection.write('Say: Lame');
+  }
+  if (key === 'o') {
+    connection.write('Say: Smooth move bae bae');
+  }
+  if (key === 'q') {
+    connection.write('Say: Move it slauce face');
+  }
+  if (key === 'p') {
+    connection.write('Say: Byeeeeeeee');
+  }
 };
+
+
 
 const setupInput = function(connectionObject) {
   connection = connectionObject;
